@@ -8,10 +8,54 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 //OBTINE UNA LISTA DE LOS TURNOS
+/**
+ * @openapi
+ * /api/listar/id?: 
+ *  get:
+ *      tags:
+ *        -  Turno
+ *      response:
+ *          200:
+ *              description: OK
+ *              content :
+ *                  application/json:
+ *                  schema:
+ *                  type: object
+ *                  properties:
+ *                      status:
+ *                          type:string
+ *                           example:OK
+ *                      data:
+ *                          type: array
+ *                      items:
+ *                           type:object
+ */
 router.get('/listar/:id?',listarTurnos);
 
 
 //REGISTRA UN NUEVO TURNO
+/**
+ * @openapi
+ * /api/registrar/id_servicio/fecha_inicio/fecha_fin: 
+ *  post:
+ *      tags:
+ *        -  Turno
+ *      response:
+ *          200:
+ *              description: OK
+ *              content :
+ *                  application/json:
+ *                  schema:
+ *                  type: object
+ *                  properties:
+ *                      status:
+ *                          type:string
+ *                           example:OK
+ *                      data:
+ *                          type: array
+ *                      items:
+ *                           type:object
+ */
 router.post('/registrar/:id_servicio/:fecha_inicio/:fecha_fin', /*[
     check('id_servicio','El nombre id del servicio es obligatorio').isLength({min:5}),
     check('fecha_turno','La fecha del turno es obligatoria').isDate(),
@@ -21,8 +65,52 @@ router.post('/registrar/:id_servicio/:fecha_inicio/:fecha_fin', /*[
 ],*/ registrarTurno);
 
 //ELIMINA UN TURNO RECIBE EL ID POR URL
+/**
+ * @openapi
+ * /api/eliminar/id: 
+ *  delete:
+ *      tags:
+ *        -  Turno
+ *      response:
+ *          200:
+ *              description: OK
+ *              content :
+ *                  application/json:
+ *                  schema:
+ *                  type: object
+ *                  properties:
+ *                      status:
+ *                          type:string
+ *                           example:OK
+ *                      data:
+ *                          type: array
+ *                      items:
+ *                           type:object
+ */
 router.delete('/eliminar/:id', eliminarTurno);
 
+/**
+ * @openapi
+ * /api/actualizar/id: 
+ *  put:
+ *      tags:
+ *        -  Turno
+ *      response:
+ *          200:
+ *              description: OK
+ *              content :
+ *                  application/json:
+ *                  schema:
+ *                  type: object
+ *                  properties:
+ *                      status:
+ *                          type:string
+ *                           example:OK
+ *                      data:
+ *                          type: array
+ *                      items:
+ *                           type:object
+ */
 //ACTUALIZA UN TURNO RECIBE EL ID POR URL
 router.put('/actualizar/:id', actualizarTurno );
 
